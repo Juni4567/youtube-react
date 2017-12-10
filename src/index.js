@@ -5,6 +5,7 @@ import YTSearch from 'youtube-api-search';
 // Custom components
 import SearchBar from './components/search_bar'
 import VideoList from './components/video_list';
+import VideoPlayer from './components/video_detail';
 
 const YT_API_KEY = 'AIzaSyC_dyS2xqOgdPiR_3tK5Yumd0YBqNK_4Bg';
 
@@ -30,10 +31,22 @@ class App extends Component{
 
 
 	render(){
+		if(!this.state.videos[0]){
+			return (<div>Loading...</div>);
+		}
+
 		return (
-			<div>
+			<div className="container">
+				
 				<SearchBar onSearchTermChange={ term => this.videoSearch(term) } />
-				<VideoList videos={this.state.videos} />
+				<div className="row">
+					<div className="col-sm-8">
+						<h2>Video Player</h2>
+
+							<VideoPlayer videoId={this.state.videos[0].id.videoId} />
+					</div>
+					<VideoList videos={this.state.videos} />
+				</div>
 			</div>
 		);
 	}

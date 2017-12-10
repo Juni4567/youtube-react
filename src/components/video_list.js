@@ -6,9 +6,11 @@ const VideoList = (props) =>{
 		return <VideoListItem video={video} key={video.id.videoId} />
 	})
 	return(
-		<ul className="list-group">
-			{videosItems}
-		</ul>
+		<div className="col-sm-4">
+			<ul className="list-group">
+				{videosItems}
+			</ul>
+		</div>
 	)
 }
 
